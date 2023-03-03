@@ -34,6 +34,8 @@ cor.test(test_scores, study_hours, method = "pearson")
 plot(study_hours,test_scores)
 data <- as.data.frame(test_scores)
 data$study_hours <- study_hours
+model <- lm(test_scores ~ study_hours , data = data)
+summary(model)
 library(ggplot2)
 p <- ggplot(data=data, aes(x=study_hours, y=test_scores)) 
 p <- p + geom_point()

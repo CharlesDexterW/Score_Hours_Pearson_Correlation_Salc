@@ -20,15 +20,11 @@ model <- lm(Test_Score ~ Total_Study_Hours, data = data)
 ggplot(data, aes(x = Total_Study_Hours, y = Test_Score)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Study_Hours", y = "Test Score", title = "Study Hours vs. Test Score")
+  labs(x = "Study_Hours", y = "Test Score", title = "Study Hours vs. Test Score") +theme_bw()
 
 # Calculate mean and standard deviation of Test_Score
 mean_score <- mean(data$Test_Score)
 sd_score <- sd(data$Test_Score)
+dens <- density(data$Test_Score)
 
-# Create a histogram with normal distribution curve
-ggplot(data, aes(x = Test_Score, y = after_stat(density))) +
-  geom_histogram(color = "black", fill = "white", bins = 20) +
-  stat_function(fun = dnorm, args = list(mean = mean_score, sd = sd_score), color = "red", linewidth = 1) +
-  labs(x = "Test Score", y = "Density", title = "Distribution of Test Scores")
-
+Test_Score
